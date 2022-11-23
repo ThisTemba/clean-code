@@ -4,33 +4,45 @@ By Temba Mateke written in November of 2022 (unless I updated it later and forgo
 
 # Introduction
 
-This is a collection of my thoughts on what clean code is and how to write clean code. Think of clean code as the opposite of “but it works” code. “But it works” code is code that that makes no sense, is extremely hard to edit, and is very sensitive to small changes. Clean code makes perfect sense, is easy to edit and easy to fix when something goes wrong. Clean code saves everyone time and heartache.
+This is a collection of my thoughts on what clean code is and how to write it. Clean code is the opposite of "but it works" code. "But it works" code is code that that doesn't make sense, is hard to edit, and is very sensitive to small changes. Clean code makes sense, is easy to edit and easy to fix when something goes wrong. Clean code takes a little bit longer to write, but in the long-run saves everyone time and heartache.
 
 **Notes**
 
-1. While this writing and most of the ideas it contains are my own, a lot of it is based on ideas other people have had and shared with me personally or otherwise.
-2. I reserve the right to change my mind about any and all of the opinions expressed in this document
-3. This is document written _prescriptively_ ****\*****to myself****\*****. If you are not me, take it as a description of my opinions on these matters.
-4. If you disagree with anything, or have any suggestion, please include them as comments on this document
-5. This is a living document. It is intentionally, perpetually unfinished. That said, if you notice anything weird in the document, feel free to let me know.
+1. While this document and most of the ideas it contains are my own, a lot of it is based on ideas other people have had long before I did.
+2. I reserve the right to change my mind about any of the opinions expressed in this document.
+3. This is document written as a description of the rules that I try to follow, not as a prescription for anyone else.
+4. If you disagree with anything in this document, or have any suggestions, please let me know using whatever method is most convenient for you.
+5. This is a living document. It is intentionally perpetually unfinished.
 
 # Readability
 
-It is critical that code is easy to understand. Code that is easy to understand is easy to debug, improve, refactor, and fix. Code that is hard to understand is hard to debug, improve, refactor, and fix. This means code that is hard to understand or “thick” code is code that comes with a tax. That is, everyone who works with the thick code has to pay a time tax to first understand how the code works. In most situations, this time tax also translates directly into a monetary tax. This tax can be avoided altogether if the code is written for readability from the start.
+Code should be easy to understand.
 
-The following sections explain how to do this.
+Code that is easy to understand is easy to debug, improve, refactor, and fix. Code that is hard to understand is hard to debug, improve, refactor, and fix. This means code that is hard to understand or "thick code" is code that comes with a time tax. Before being able to confidently modify the thick code, the time tax must be paid to understand the code. Quite often, this time tax translates directly into actual money that is wasted paying the developer to understand thick code.
+
+By writing code with readability in mind from the start, we can avoid this unnecessary tax altogether. The sections below, explain how to do this.
 
 ## Writing for Readability
 
-Making code easy to understand is similar to making any form of writing easy to understand.
+Code is a form of writing. Many of the techniques used to make typical forms of writing easy to understand apply to coding as well.
 
 ### Clarity
 
-The first step is having a clear idea of what it is you are trying to communicate, or in the case of code, what it is your code is supposed to be doing. If you are not absolutely sure about what your code is supposed to be doing, you cannot possibly write your code in a way that is easy to understand.
+The first step is having a clear idea of what it is you are trying to communicate, in the case of code, this means having a clear idea of what your code is supposed to be doing. You cannot communicate an idea clearly, if that idea is not clear in your own head.
 
-If what you are coding is a task that was given to you and you are not clear on what exactly the task is, ask questions to the person who gave you the task. If it is something that you came up with yourself, ask yourself those questions. You should be able to explain in a few words what it is you’re trying to do and why.
+If the coding task you are working on was assigned to you, ask as many questions about the nature of the task as it takes for you to be absolutely clear on the matter. If the coding task you are working on is personal, be just as ruthless in asking yourself these questions.
+
+You should be able to explain in a few words what it is you're trying to do and why.
 
 ### Modularity / Fragmentation
+
+[What I would like to express here is that in order to communicate anything, that something needs to be broken down into bite-size chunks. My feeling is that people can only really hold 5 to 10 ideas in their head at once at any given point, so at any given level of abstraction, there should only be 5 to 10 things in play - 5 to 10 functions in a parent function, 5 to 10 components in a parent component etc. The analogy in writing is don't have chapters which just go on and on and on. If you have an extremely long chapter, find a way to fragment it into a few bigger chunks. ]
+
+[I guess there are two ways to approach this, one is from the top down and the other is from the bottom up. From the top down you are asking, "how can I break down this idea into smaller chunks?". From the bottom up you are asking, "how can I group these chunks into a few main ideas?". You are trying to achieve the same goal. Big things are hard to understand and smallness is in the middle, not at the extremes. An article with 1000 paragraphs in it has the problem of being too big and too small. It is too big because there are too many paragraphs dumped in one place. It is too small because the largest subcomponent is tiny (a paragraph). We make the whole thing more digestible by fragmenting the article, which is the same as grouping paragraphs together.
+
+[Fragmenting the whole and grouping the parts are the same action. There are times when we must do one over the other though. We must fragment and not group, when we have a big idea whose subcomponents we have not yet identified. And we must group when we have lots of small ideas whose unifying idea we have not yet identified. In writing this document, I am working primarily on the grouping task as I have lots of ideas as to how to write clean code, but it is not yet obvious how all those ideas are related. The alternative would be if I somehow knew exhaustively all the factors that go into writing good code, then worked to granularize those factors.]
+
+[I think the title of this section should reflect this duality in that there are two actions that go hand in hand, one working to group parts, the other working to divide wholes. Maybe "grouping" and "fragmenting". "Fragmentation and synthesis"]
 
 The next step, is breaking down the main idea into a few smaller chunks. In the case of writing these chunks may be anything from chapters to sentences. In the case of coding it could be anything from packages and modules to individual lines of code.
 
@@ -38,13 +50,25 @@ At any given level of abstraction, there shouldn’t be too much or too little f
 
 There are exceptions for all the examples above, but the general idea is that if something gets too big, break it into smaller pieces by grouping subcomponents. This makes code easier to understand because the reader can read through five lines of code at a high level and get a summary of everything that is going on. If they don’t understand what any particular subcomponent is doing, they can “step into” that component and see how it is defined.
 
-### Simplicity
+### Simplicity and Brevity
 
-When trying to communicate efficiently, we use no more words than we need to and we avoid uncommon words and grammar.
+When trying to communicate efficiently, we use avoid using big words and use no more words than necessary. These are the concepts of simplicity and brevity. They apply only to forms of writing whose goal it is to efficiently communicate a few ideas to a large audience, such as reports, presentations, and emails with lots of CCs.
+
+Coding falls into this category of writing as we are trying to efficiently communicate how the code works to a large audience of developers. What makes the audience especially large is the code's lifespan. That is, even if you are working on a project alone, you become a new audience member when you revisit that code after a few weeks. Since you are no longer familiar with it, the code must "re-explain" itself to you each time.
+
+#### Simplicity
+
+Simple code avoids the use of complex structures as much as possible.
 
 Similarly, when writing code for readability, it should be written in no more lines / characters than necessary while avoiding techniques that are difficult to understand. This means simplifying an shortening everything so long as the process does not make the code harder to understand.
 
 There are some situations in which performance must be prioritized over readability. In these situations you may want to include comments to explain in a few words what the code is doing and why it is being done this way.
+
+### Brevity
+
+When trying to communicate efficiently, we use no more words than necessary. This rule only applies to forms
+
+In practice, this means that if there are two equally
 
 ### How many lines?
 
@@ -54,34 +78,37 @@ A related issue is that of the number of characters per line. A commonly used st
 
 ## Naming
 
+Names tell us what things are. Naming plays a massive role in coding since developers are primarily dealing with things they themselves created. A good name describes the "thing" it is naming. A great name is not only descriptive, but also consistent, conformant, and compact.
+
 ### Consistency
 
 Similar things should have similar names.
 
-- Variables that store similar data should have similar names. A function with a `location` parameter should not be passed a variable called `coords`. Two variables that both store contact information should not be named `employeeContactInfo` and `contactInfoForCustomer`. They should be named in the same way `employeeContactInfo` and `customerContactInfo`. Giving similar variables similar names makes code easier to understand.
-- Stick to one case per language per project. That case could be `snake_case`, `camelCase`, `kebab-case`, or something else, whatever it is, use it consistently. Otherwise you will face issues like naming a property `num_segments` in one file and wondering why accessing that property with `numSegments` in another file is not working.
+- Variables that store similar data should have similar names. A function with a `location` parameter should not be passed a variable called `coords`. Two variables that both store contact information should not be named `employeeContactInfo` and `contactInfoForCustomer`. They should be named in the same way: `employeeContactInfo` and `customerContactInfo`. Giving similar variables similar names makes code easier to understand.
+- Stick to one case per language per project. That case could be `snake_case`, `camelCase`, `kebab-case`, or something else. Whatever it is, use it consistently. Not doing this will result issues like naming a property `num_segments` in one file and wondering why accessing that property with `numSegments` in another file is not working.
+- Similar files should have similar filenames.
 
 ### Conformity
 
-If a good name already exists, use it. Examples:
+If a good naming convention already exists, use it.
 
-- Classes in Python and Java are typically defined using `UpperCamelCase`. Sticking to this convention, makes code easier for newcomers to understand your code.
-- If a repository uses the name `pts` to refer to an array of points, stick to that convention rather than introducing a new name like `points` or `pnts`. Alternatively if the names currently in use in a project are causing issues, suggest alternatives to your team. Whatever is ultimately agreed upon should be used ****\*\*\*\*****consistently****\*\*\*\***** across the project.
+- Classes in Python and Java are typically defined using `UpperCamelCase`. Sticking to this convention, makes code easier for newcomers to understand.
+- If a repository uses the name `pts` to refer to an array of points, stick to that convention rather than introducing a new name like `points` or `pnts`. Alternatively if the names currently in use in a project are causing issues, suggest alternatives to your team. Whatever is ultimately agreed upon should be used **consistently** across the project.
 - If a documentation for a package contains examples, try to name your variables similar to what is used in the examples
 
 ### Compactness
 
-Shorter names take up less space, and are easier to read and type. Examples:
+Shorter names take up less space, and are often easier to read and type. Examples:
 
-- If you’re dealing with `points` in a certain file, you can instead use the abbreviation `pts` for `points` and `pt` for a single `point`.
+- If you're dealing with `points` in a certain file, you can instead use the abbreviation `pts` for `points` and `pt` for a single `point`.
 - An extreme version of this can be implemented if you have a short function with one parameter that does a simple manipulation on the input. In this case, you can use just the first letter of the parameter. For instance, instead of `degToRad(theta)` you can use `degToRad(t)`. Instead of `handleEvent(event)` you can have `handleEvent(e)`. In simple functions like this, there is no ambiguity about the single-letter variables.
-- This also means variables names should never start with “a”, “the”, ”an” etc. as these words add nothing to the meaning and just take up space. Similarly, adding the data type to a variable should be avoided as much as possible. Instead of `wordList` try `words`. Instead of `firstNameString` try use `firstName`. Only include the data type if doing so makes the code easier to understand.
+- This also means variables names should never start with "a", "the", "an" etc. as these words add nothing to the meaning and just take up space. Similarly, adding the data type to a variable should be avoided as much as possible. Instead of `wordList` try `words`. Instead of `firstNameString` try use `firstName`. Only include the data type if doing so makes the code easier to understand.
 - Use common coding abbreviations like `avg`, `max`, `arr`, `props`, `conn`, `fig`, `img`, `num`, rather than spelling out the full word. These stand for average, maximum, array, properties, connection, figure, image, and number. If a common unambiguous abbreviation exists, use it.
 
 Exceptions:
 
-- Some names just have to be long, but even so, no variable name should be more than five words or so
-- If you’re reading data from an external source (data file, api, package), you may have no control over what names were used to define the data. Just read the data in using whatever names the other party used, the immediately rename the variables if the names they chose are not suitable for your project.
+- Some names just have to be long, but even so, no variable name should be more than five words or so. Sometimes simplifying a name requires first simplifying the thing it is naming.
+- If you're using code or data from an external source (data file, API, package), you may have no control over what names were used in that external source. Either stick to the convention used by the external source, or introduce your project's conventions to the data/code as early as possible.
 
 ## Formatting
 
@@ -110,7 +137,7 @@ You are trying to create a tool that analyzes your bank transactions and present
 
 Working top-down creates modular code with hardly any effort. It also forces you to think about what your code is doing at a high level, as well as the interfaces between modules. Notice that in the second case, you are forced to think about what kind of data is being passed between `getData`, `processData`, and `plotData`, before those functions are even written. Whereas, in the first case, it is all too easy to just take whatever data is available at the start and manipulate it into whatever format suits the immediate next step.
 
-## E****************\*\*****************xpand and Contract****************\*\*****************
+## E**\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***xpand and Contract**\*\***\*\*\*\***\*\***\*\***\*\***\*\*\*\***\*\***
 
 Coding is best done in cycles of expansion and contraction.
 
@@ -181,7 +208,7 @@ A great place to start is with popularity. Popular tools tend to offer the follo
 
 - There will likely be lots of **online support** for the issues you face i.e. almost all issues you face will be one Google away from a solution
 - There will likely be **fewer bugs**, since the large number of users means higher bug detection rates and more demand for issues to be resolved
-- There will likely be ****************\*\*\*\*****************good documentation****************\*\*\*\***************** for the tool since lots of people want to know how to use it, and many are able to contribute to the docs
+- There will likely be **\*\***\*\*\*\***\*\***\*\*\*\***\*\***\*\*\*\***\*\***good documentation**\*\***\*\*\*\***\*\***\*\*\*\***\*\***\*\*\*\***\*\*** for the tool since lots of people want to know how to use it, and many are able to contribute to the docs
 - There will likely be **more tutorials** explaining exactly how to get started with the tool and achieve specific outcomes with it
 - It will likely be **highly optimized** since small “inconveniences” will be felt by a large number of users, some of whom will be compelled to optimize the issues away.
 
@@ -189,7 +216,7 @@ The list goes on.
 
 ### Issues with Popularity
 
-One critical way in which the popularity metric can fail is with legacy tools. That is, if a lot of people \***\*used\*\*** _to use_ a certain tool, there there will be lots of documentation and tutorials, but it may be outdated. There won’t necessarily be good online support or fewer bugs either. For this reason it is helpful to distinguish between tools that \***\*are\*\*** popular and tools that ****\*\*****used to be****\*\***** popular.
+One critical way in which the popularity metric can fail is with legacy tools. That is, if a lot of people \***\*used\*\*** _to use_ a certain tool, there there will be lots of documentation and tutorials, but it may be outdated. There won’t necessarily be good online support or fewer bugs either. For this reason it is helpful to distinguish between tools that \***\*are\*\*** popular and tools that \***\*\*\*\*\***used to be\***\*\*\*\*\*** popular.
 
 Another thing to look out for is tools that are popular for something other than your desired use case. For instance, you may find that Python is the most popular programming language and then proceed to create a computationally intensive package in Python. What you would have missed is that Python is popular for being flexible and easy to learn, not fast.
 
